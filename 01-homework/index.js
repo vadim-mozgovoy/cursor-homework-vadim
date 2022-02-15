@@ -1,28 +1,27 @@
-
 const apple = 15.678
 const orange = 123.965
 const lemon = 90.2345
 
-const max = Math.max(apple,orange,lemon)
-const min = Math.min(apple,orange,lemon)
-const sumProducts = apple+orange+lemon
-const sumProductsFloor = Math.floor(apple)+Math.floor(orange)+Math.floor(lemon)
-const sumProductsRound = Math.round(sumProducts/100)*100
-const checkPairNumber = (sumProductsFloor % 2)===0 ? "true" : "false"
+const max = Math.max(apple, orange, lemon)
+const min = Math.min(apple, orange, lemon)
+const sumProducts = apple + orange + lemon
+const sumProductsFloor = Math.floor(apple) + Math.floor(orange) + Math.floor(lemon)
+const sumProductsRound = Math.round(sumProducts / 100) * 100
+const checkPairNumber = (sumProductsFloor % 2) === 0 ? "true" : "false"
 const rest = 500 - sumProducts
-const average = sumProducts/3
+const average = sumProducts / 3
 const averageSumToFix = +average.toFixed(2)
+
 function getRandomArbitrary(min, max) {
     return Math.trunc(Math.random() * (max - min) + min);
 }
-let discount = getRandomArbitrary(0,100)
-const order = +(orange - (orange*discount)/100).toFixed(2)
-const someProduct = orange
-const profit = +(someProduct/2 - (someProduct*discount)/100).toFixed(2)
+
+let discount = getRandomArbitrary(0, 100)
+const order = +(sumProducts - (sumProducts * discount) / 100).toFixed(2)
+const profit = +(order / 2 - (order * discount) / 100).toFixed(2)
 
 
-
-document.write(`apple = ${apple}<br>`,`orange = ${orange}<br>`,`lemon = ${lemon}<br>`,)
+document.write(`apple = ${apple}<br>`, `orange = ${orange}<br>`, `lemon = ${lemon}<br>`,)
 document.write(`Максимальное значение: ${max} <br>`)
 document.write(`Минимальное значение: ${min} <br>`)
 document.write(`Сумма товаров: ${sumProducts} <br>`)
