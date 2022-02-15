@@ -7,7 +7,7 @@ const min = Math.min(apple, orange, lemon)
 const sumProducts = apple + orange + lemon
 const sumProductsFloor = Math.floor(apple) + Math.floor(orange) + Math.floor(lemon)
 const sumProductsRound = Math.round(sumProducts / 100) * 100
-const checkPairNumber = (sumProductsFloor % 2) === 0 ? "true" : "false"
+const checkPairNumber = (Math.floor(sumProducts) % 2) === 0 ? "true" : "false"
 const rest = 500 - sumProducts
 const average = sumProducts / 3
 const averageSumToFix = +average.toFixed(2)
