@@ -16,7 +16,7 @@ function getRandomArbitrary(min, max) {
     return Math.trunc(Math.random() * (max - min) + min);
 }
 
-let discount = getRandomArbitrary(0, 100)
+const discount = getRandomArbitrary(0, 100)
 const order = +(sumProducts - (sumProducts * discount) / 100).toFixed(2)
 const profit = +(order / 2 - (order * discount) / 100).toFixed(2)
 
@@ -33,3 +33,11 @@ document.write(`Среднее значение цен округленое до
 document.write(`Случайная скидка на товар:  ${discount} % <br>`)
 document.write(`Сумма товара с учетом скидки округленое до 2 знаков после запятой:  ${order}грн <br>`)
 document.write(`Чистая прибыль с учетом скидки: ${profit} грн <br>`)
+
+
+// 2 способ где каждое число массива сначала округляется а потом результаты суммируются
+// const arr = [15.678, 123.965, 90.2345 ]
+// getProductsFlooredSum = (arr, callback)=>arr.reduce((sum,current)=>sum + callback(current),0)
+// console.log(getProductsFlooredSum(arr,Math.floor))
+
+
