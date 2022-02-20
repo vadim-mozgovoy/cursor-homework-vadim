@@ -12,7 +12,9 @@ let checkBoolean = confirm("Хотите ли Вы пропускать парн
 let sum = 0;
 
 function sumInterval() {
-    for (let i = +startNumber; i <= +endNumber; i++) {
+    let N = Math.min(startNumber,endNumber)
+    let M = Math.max(startNumber,endNumber)
+    for (let i = N; i <= M; i++) {
         if (checkBoolean === true) {
             if (i % 2) {
                 sum += i
@@ -21,7 +23,18 @@ function sumInterval() {
             sum += i
         }
     }
-    document.write(`Сумма чисел : ${sum}`)
+    document.write(`<div>Складання чисел від ${N} до ${M}</div>`);
+    document.write(`<div>Пропускати парні: ${checkBoolean}</div>`);
+    document.write(`<div>Сумма чисел : ${sum}</div>`)
 }
 
 sumInterval()
+
+
+
+
+
+
+
+
+
