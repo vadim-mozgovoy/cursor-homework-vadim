@@ -5,53 +5,58 @@ const marks = [4, 5, 5, 3, 4, 5];
 
 //1)Розділіть студентів на пари(хлопець + дівчина) для работи над проєктом. У вас повинен вийти вкладений масив з парами студентів: [["Олександр", "Олена"], [..], [...]];
 const pairs = function getPairs(students) {
-    let groups = [];
-    const group1 = [students[0], students[2]];
-    const group2 = [students[1], students[3]];
-    const group3 = [students[4], students[5]];
-    groups.push(group1, group2, group3)
+    let groups;
+    const girls = students.filter((stud) => {
+        return stud[stud.length - 1] === 'а';
+    });
+    const boys = students.filter((stud) => {
+        return stud[stud.length - 1] !== 'а';
+    });
+
+    groups = boys.map((boy, i) => [boy, girls[i]]);
     return groups
+
 }
-console.log(pairs(students))
+console.log('Хлопець + дівчина:', pairs(students))
 
 //2) Зіставте пари з попереднього завдання та теми проєктів, над якими студенти будуть працювати. Повинен вийти вкладений масив виду: [["Олександр і Олена", "Теорія автоматів"], [...], [...]]
 function getGroupThemes() {
-    const p = pairs(students)
+    const team = pairs(students)
     const groupThemes = [];
 
-    for (let i = 0; i < p.length; i++) {
-        groupThemes.push([p[i][0] + ' i ' + p[i][1], themes[i]])
+    for (let i = 0; i < team.length; i++) {
+        groupThemes.push([team[i][0] + ' i ' + team[i][1], themes[i]])
     }
     return groupThemes
 }
 
-console.log(getGroupThemes())
+console.log('Кожна команда отримала свою тему проекту', getGroupThemes())
 
 //3) Зіставте оцінки(marks) зі студентом(students): [["Саша", 4], [...], [...]]
 
 function givePersonMarks() {
-    const s = students
-    const m = marks
+    const arrStudents = students
+    const arrMarks = marks
     const personMarks = [];
-    for (let i = 0; i < s.length; i++) {
-        personMarks.push([s[i], m[i]])
+    for (let i = 0; i < arrStudents.length; i++) {
+        personMarks.push([arrStudents[i], arrMarks[i]])
     }
     return personMarks
 }
 
-console.log(givePersonMarks())
+console.log('Персональна оцiнка для кожного студента', givePersonMarks())
 
 //4) Поставте кожній парі випадкову оцінку(від 1 до 5) за проєкт(тут функція буде нечистою, але не повинна мутувати массив): [["Олександр і Олена", "Теорія автоматів", 5], [...], [...]]
 
 function giveRandomMarks() {
     const pairsRandomMarks = [];
-    const r = getGroupThemes()
+    const pairsGroups = getGroupThemes()
 
-    for (let i = 0; i < r.length; i++) {
-        pairsRandomMarks.push(r[i])
+    for (let i = 0; i < pairsGroups.length; i++) {
+        pairsRandomMarks.push(pairsGroups[i])
         pairsRandomMarks[i].push(Math.floor(Math.random() * 5) + 1)
     }
     return pairsRandomMarks
 }
 
-console.log(giveRandomMarks())
+console.log('Командна оцiнка', giveRandomMarks())
