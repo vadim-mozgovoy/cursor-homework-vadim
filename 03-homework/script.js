@@ -26,7 +26,7 @@ function salary(sal, tax) {
 
 //5) Створити функцію, яка повертає випадкове ціле число в діапазоні від N до M. Приклад: getRandomNumber(1, 10) -> 5
 
-const getRandomNumber = (n, m) => parseInt(n + Math.random() * (m - n))
+const getRandomNumber = (min, max) => parseInt(min + Math.random() * (max - min))
 
 // 6)Створити функцію, яка рахує скільки разів певна буква повторюється в слові. Приклад: countLetter("а", "Асталавіста") -> 4
 
@@ -38,7 +38,7 @@ function countLetter(a, str) {
 // Врахуйте, інші валюти не конвертуються, потрібно виводити помилку, і також регістр uah не має значення.
 
 function convertCurrency(money) {
-    let currentExchangeRate = 39.25
+    let CURRENT_EXCHANGE_RATE = 39.25
     let itemNumber = (parseInt(money) + '').split('').length
     const currency = money.split('').splice(itemNumber).join('').toLowerCase();
     let res, exchange
@@ -46,10 +46,10 @@ function convertCurrency(money) {
         return 'Неправильно введено числовое значение!';
     }
     if (currency === 'uah') {
-        res = (parseInt(money) / currentExchangeRate).toFixed(2);
+        res = (parseInt(money) / CURRENT_EXCHANGE_RATE).toFixed(2);
         exchange = '$'
     } else if (currency === '$') {
-        res = (parseInt(money) * currentExchangeRate).toFixed(2);
+        res = (parseInt(money) * CURRENT_EXCHANGE_RATE).toFixed(2);
         exchange = 'UAH'
     } else {
         return "Помилка!Конвертуються тільки $ або UAH, інші валюти не конвертуються"
@@ -59,7 +59,7 @@ function convertCurrency(money) {
 
 //8)Створіть функцію генерації випадкового паролю (тільки числа), довжина встановлюється користувачем або по замовчуванню = 8 символам.
 
-const getRandomPassword = (length) => Math.floor(Math.pow(10, length-1) + Math.random() * 9 * Math.pow(10, length-1));
+const getRandomPassword = (length = 8) => Math.floor(Math.pow(10, length - 1) + Math.random() * 9 * Math.pow(10, length - 1));
 
 //9)Створіть функцію, яка видаляє всі букви з речення. Приклад: deleteLetters('a', "blablabla") -> "blblbl"
 
@@ -68,13 +68,9 @@ const deleteLetters = (letter, text) => text.toLowerCase().split('').filter(item
 // 10)Створіть функцію, яка перевіряє, чи є слово паліндромом. Приклад: isPalyndrom("мадам") -> true, isPalyndrom("кокос") -> false, isPalyndrom("Я несу гусеня") -> true
 
 function isPalindrome(myString) {
-    let removeChar = myString.replace(/[^A-Z0-9А-Я]/ig, "").toLowerCase();
-    let checkPalindrome = removeChar.split('').reverse().join('');
-    if (removeChar === checkPalindrome) {
-        return 'Polindrome - true'
-    } else {
-        return 'is a not Polindrome - false'
-    }
+    const removeChar = myString.replace(/[^A-Z0-9А-Я]/ig, "").toLowerCase();
+    const checkPalindrome = removeChar.split('').reverse().join('');
+    return (removeChar === checkPalindrome) ? 'Polindrome - true' : 'is a not Polindrome - false'
 }
 
 // 11) Створіть функцію, яка видалить з речення букви, які зустрічаються більше 1 разу. Приклад: deleteDuplicateLetter("Бісквіт був дуже ніжним") -> "сктдеим"
@@ -94,7 +90,7 @@ document.write(`5) Створити функцію, яка повертає ви
 document.write(`6) Створити функцію, яка рахує скільки разів певна буква повторюється в слові. Приклад: countLetter("а", "АсталАвіста") -> 4 = <span>${countLetter('А', 'АсталАвіста')}</span> <br> `)
 document.write(`7) Створіть функцію, яка конвертує долари в гривні та навпаки в залежності від наявності символа $ або UAH в рядку. Приклад: convertCurrency("100$") -> 2500 грн. або convertCurrency("2500UAH") -> 100$; 
 Врахуйте, інші валюти не конвертуються, потрібно виводити помилку, і також регістр uah не має значення = <span>${convertCurrency('2043Uah')}</span> <br> `)
-document.write(`8)Створіть функцію генерації випадкового паролю (тільки числа), довжина встановлюється користувачем або по замовчуванню = 8 символам; getRandomPassword(4)= <span>${getRandomPassword(4)}</span><br>`)
+document.write(`8)Створіть функцію генерації випадкового паролю (тільки числа), довжина встановлюється користувачем або по замовчуванню = 8 символам; getRandomPassword(8)= <span>${getRandomPassword()}</span><br>`)
 document.write(`9)Створіть функцію, яка видаляє всі букви з речення. Приклад: deleteLetters('a', "blablabla") -> "blblbl" = <span>${deleteLetters('a', "blAblabla")}</span><br>`)
 document.write(`10)Створіть функцію, яка перевіряє, чи є слово паліндромом. Приклад: isPalyndrom("мадам") -> true, isPalyndrom("кокос") -> false, isPalyndrom("Я несу гусеня") -> true <br>
 isPalindrome("мадам")= <span>${isPalindrome("мадам")}</span><br>isPalindrome("Я несу гусеня")= <span>${isPalindrome("Я несу гусеня")}</span><br>
