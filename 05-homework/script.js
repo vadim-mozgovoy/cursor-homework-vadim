@@ -11,7 +11,7 @@ function getRandomArray(length, min, max) {
     return randomArray
 }
 
-console.log(getRandomArray(15, 1, 100))
+console.log('getRandomArray(15, 1, 100) = ', getRandomArray(15, 1, 100))
 
 
 //2. Створіть функцію getModa(...numbers) – яка вираховує моду всіх переданих в неї аргументів. НЕЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
@@ -36,7 +36,7 @@ function getModa(...numbers) {
             count = tempCount;
         }
     }
-    console.log('Саме моднє число:', popular)
+    console.log('Саме моднє число [6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, "f" ]:', popular)
 }
 
 getModa(6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, 'f')
@@ -55,7 +55,7 @@ function getAverage(...numbers) {
     return total / arrNumbers.length
 }
 
-console.log(getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+console.log('getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ', getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
 
 //4. Створіть функцію getMedian(...numbers) – яка рахує медіану всіх переданих в неї аргументів. НЕЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
 // Приклад: getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) –> 23 Приклад: getMedian(1, 2, 3, 4) –> 2.5
@@ -68,21 +68,21 @@ function getMedian(...numbers) {
 
 }
 
-console.log(getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
-console.log(getMedian(1, 2, 3, 4))
-console.log(getMedian(1, 2, 3, 4, 5))
+console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =',getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =',getMedian(1, 2, 3, 4))
+console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ',getMedian(1, 2, 3, 4, 5))
 
 //5. Створіть функцію filterEvenNumbers(...numbers) – яка фільтрує парні числа передані як аргументи функції
 // Приклад: filterEvenNumbers(1, 2, 3, 4, 5, 6) -> [1, 3, 5]
 
 const filterEvenNumbers = (...numbers) => numbers.filter((el) => el % 2 !== 0)
-console.log(filterEvenNumbers(1, 2, 3, 4, 5, 6))
+console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6) = ',filterEvenNumbers(1, 2, 3, 4, 5, 6))
 
 //6. Створіть функцію countPositiveNumbers(...numbers) – яка порахує кількість чисел більших 0
 // Приклад: countPositiveNumbers(1, -2, 3, -4, -5, 6) -> 3
 
 const countPositiveNumbers = (...numbers) => numbers.filter((el) => el > 0).length
-console.log(countPositiveNumbers(1, -2, 3, -4, -5, 6))
+console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6) = ',countPositiveNumbers(1, -2, 3, -4, -5, 6))
 
 
 //7. Створіть функцію getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті,
@@ -90,7 +90,7 @@ console.log(countPositiveNumbers(1, -2, 3, -4, -5, 6))
 // Приклад: getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) -> [55, 55]
 
 const getDividedByFive = (...numbers) => numbers.filter(item => item % 5 === 0)
-console.log(getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+console.log( 'getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =',getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
 
 
 // 8.Створіть функцію replaceBadWords(string) – яка 1) розіб'є фразу на слова, 2) замінить погані слова на зірочки (*).
@@ -114,9 +114,9 @@ function replaceBadWords(string) {
 }
 
 
-console.log(replaceBadWords("Are you fucking kidding shit?"))
-console.log(replaceBadWords("Holy shit!"))
-console.log(replaceBadWords("It's bullshit!"))
+console.log('replaceBadWords("Are you fucking kidding shit?") -',replaceBadWords("Are you fucking kidding shit?"))
+console.log('replaceBadWords("Holy shit!") -',replaceBadWords("Holy shit!"))
+console.log('replaceBadWords("It\'s bullshit!") -',replaceBadWords("It's bullshit!"))
 
 // 9.Створіть функцію divideByThree(word), яка розбиває кожне слово на умовні склади по 3 букви.
 // Якщо букв менше трьох – не розбиває. Пробіли завжди видаляються. Рядок приводится до нижнього регістру.
@@ -132,8 +132,8 @@ function divideByThree(word) {
         }, []);
 }
 
-console.log(divideByThree("Commander hello"));
-console.log(divideByThree("live"))
+console.log('divideByThree("Commander hello") -',divideByThree("Commander hello"));
+console.log('divideByThree("live") - ',divideByThree("live"))
 
 //10. Створіть функцію generateCombinations(word), яка видасть всі можливі перестановки(унікальні, без повторень) букв в слові.
 //Для тестів не передавайте слова в яких більше 10 букв. Краще взагалі обмежити работу функції 10 буквами.
@@ -157,8 +157,8 @@ function generateCombinations(word) {
     }
 }
 
-console.log(generateCombinations("man"))
-console.log(generateCombinations("ol"))
+console.log('generateCombinations("man") -',generateCombinations("man"))
+console.log('generateCombinations("ol") -',generateCombinations("ol"))
 
 
 
