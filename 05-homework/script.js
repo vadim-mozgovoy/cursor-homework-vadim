@@ -4,42 +4,42 @@
 
 function getRandomArray(length, min, max) {
     const randomArray = [];
+    const maxValue = Math.max(min, max)
+    const minValue = Math.min(min, max)
     for (let i = 0; i < length; i++) {
-        const num = parseInt(min + Math.random() * (max - min))
+        const num = parseInt(minValue + Math.random() * (maxValue - minValue))
         randomArray.push(num)
     }
     return randomArray
 }
 
-console.log('getRandomArray(15, 1, 100) = ', getRandomArray(15, 1, 100))
+console.log('getRandomArray(15, 1, 100) = ', getRandomArray(15, 100, 1))
 
 
 //2. Створіть функцію getModa(...numbers) – яка вираховує моду всіх переданих в неї аргументів. НЕЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
 // Приклад: getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) –> 2
 
 function getModa(...numbers) {
-    const arrNumbers = [];
-    numbers.filter((el) => {
-        if (Number.isInteger(el) && !isNaN(el)) return arrNumbers.push(el)
-    })
 
+    const arrNumbers = numbers.filter((el) => Number.isInteger(el) && !isNaN(el));
     let count = 1, tempCount, tempPopular;
     let popular = numbers[0];
-    for (let i = 0; i < numbers.length - 1; i++) {
-        tempPopular = numbers[i];
+    for (let i = 0; i < arrNumbers.length - 1; i++) {
+        tempPopular = arrNumbers[i];
         tempCount = 0;
-        for (let j = 1; j < numbers.length; j++) {
-            if (tempPopular === numbers[j]) tempCount++;
+        for (let j = 1; j < arrNumbers.length; j++) {
+            if (tempPopular === arrNumbers[j]) tempCount++;
         }
         if (tempCount > count) {
             popular = tempPopular;
             count = tempCount;
         }
     }
-    console.log('Саме моднє число [6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, "f" ]:', popular)
+
+    return popular
 }
 
-getModa(6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, 'f')
+console.log('Саме моднє число [6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, "f" ] => ', getModa(6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, 'f'))
 
 
 //3. Створіть функцію getAverage(...numbers) – яка рахує середнє арифметичне всіх переданих в неї аргументів.
@@ -47,10 +47,7 @@ getModa(6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, 'f')
 // Приклад: getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) –> 34.4
 
 function getAverage(...numbers) {
-    const arrNumbers = [];
-    numbers.filter((el) => {
-        if (Number.isInteger(el) && !isNaN(el)) return arrNumbers.push(el)
-    })
+    const arrNumbers = numbers.filter((el) => Number.isInteger(el) && !isNaN(el));
     const total = arrNumbers.reduce((sum, current) => sum + current)
     return total / arrNumbers.length
 }
@@ -68,29 +65,29 @@ function getMedian(...numbers) {
 
 }
 
-console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =',getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
-console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =',getMedian(1, 2, 3, 4))
-console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ',getMedian(1, 2, 3, 4, 5))
+console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =', getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =', getMedian(1, 2, 3, 4))
+console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ', getMedian(1, 2, 3, 4, 5))
 
 //5. Створіть функцію filterEvenNumbers(...numbers) – яка фільтрує парні числа передані як аргументи функції
 // Приклад: filterEvenNumbers(1, 2, 3, 4, 5, 6) -> [1, 3, 5]
 
-const filterEvenNumbers = (...numbers) => numbers.filter((el) => el % 2 !== 0)
-console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6) = ',filterEvenNumbers(1, 2, 3, 4, 5, 6))
+const filterEvenNumbers = (...numbers) => numbers.filter((el) => Number(el) && el % 2 !== 0)
+console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6, "g") = ', filterEvenNumbers(1, 2, 3, 4, 5, 6, 'g'))
 
 //6. Створіть функцію countPositiveNumbers(...numbers) – яка порахує кількість чисел більших 0
 // Приклад: countPositiveNumbers(1, -2, 3, -4, -5, 6) -> 3
 
 const countPositiveNumbers = (...numbers) => numbers.filter((el) => el > 0).length
-console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6) = ',countPositiveNumbers(1, -2, 3, -4, -5, 6))
+console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6) = ', countPositiveNumbers(1, -2, 3, -4, -5, 6))
 
 
 //7. Створіть функцію getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті,
 // які діляться на ціло на 5
 // Приклад: getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) -> [55, 55]
 
-const getDividedByFive = (...numbers) => numbers.filter(item => item % 5 === 0)
-console.log( 'getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =',getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+const getDividedByFive = (...numbers) => numbers.filter(item => item % 5 === 0 && item !== 0)
+console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
 
 
 // 8.Створіть функцію replaceBadWords(string) – яка 1) розіб'є фразу на слова, 2) замінить погані слова на зірочки (*).
@@ -101,22 +98,27 @@ console.log( 'getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3
 // Приклад: replaceBadWords("Holy shit!") -> "Holy ****!"
 // Приклад: replaceBadWords("It's bullshit!") -> "It's bull****!"
 
-function replaceBadWords(string) {
+function replaceBadWords(string, newBadWord) {
     let badWords = ['shit', 'fuck'];
-    return string.split(' ').map(word => {
-        badWords.forEach(bad => {
-            if (word.includes(bad)) {
-                word = word.replace(bad, '****');
+    if (newBadWord !== '') {
+         badWords.push(newBadWord);
+    }else{
+        return badWords
+    }
+    return string.toLowerCase().split(' ').map(word => {
+        for (let badWord of badWords) {
+            if (word.includes(badWord)) {
+                return word.replaceAll(badWord, new Array(badWord.length).fill('*').join(''));
             }
-        });
+        }
         return word
     }).join(' ')
 }
 
 
-console.log('replaceBadWords("Are you fucking kidding shit?") -',replaceBadWords("Are you fucking kidding shit?"))
-console.log('replaceBadWords("Holy shit!") -',replaceBadWords("Holy shit!"))
-console.log('replaceBadWords("It\'s bullshit!") -',replaceBadWords("It's bullshit!"))
+console.log('replaceBadWords("Are you fucking kidding shit?") -', replaceBadWords("Are you fuckingfucking kidding shit?", 'kid'))
+console.log('replaceBadWords("Holy shit!") -', replaceBadWords("Holy shit!"))
+console.log('replaceBadWords("It\'s bullshit!") -', replaceBadWords("It's bullshit!"))
 
 // 9.Створіть функцію divideByThree(word), яка розбиває кожне слово на умовні склади по 3 букви.
 // Якщо букв менше трьох – не розбиває. Пробіли завжди видаляються. Рядок приводится до нижнього регістру.
@@ -132,8 +134,8 @@ function divideByThree(word) {
         }, []);
 }
 
-console.log('divideByThree("Commander hello") -',divideByThree("Commander hello"));
-console.log('divideByThree("live") - ',divideByThree("live"))
+console.log('divideByThree("Commander hello") -', divideByThree("Commander hello"));
+console.log('divideByThree("live") - ', divideByThree("live"))
 
 //10. Створіть функцію generateCombinations(word), яка видасть всі можливі перестановки(унікальні, без повторень) букв в слові.
 //Для тестів не передавайте слова в яких більше 10 букв. Краще взагалі обмежити работу функції 10 буквами.
@@ -157,8 +159,25 @@ function generateCombinations(word) {
     }
 }
 
-console.log('generateCombinations("man") -',generateCombinations("man"))
-console.log('generateCombinations("ol") -',generateCombinations("ol"))
+console.log('generateCombinations("man") -', generateCombinations("man"))
+console.log('generateCombinations("ol") -', generateCombinations("ol"))
 
 
+// const arr = [1, 2, 3, 3, 2, 2, 18, 18, 18, 18, 18, 18];
+//
+// const res = arr.reduce((acc, curr) => {
+//     if (acc[curr]) {
+//         acc[curr] = acc[curr] + 1;
+//     } else {
+//         acc[curr] = 1;
+//     }
+//
+//     return acc;
+// }, {});
+//
+// console.log(
+//     Object.keys(res).find((el) => {
+//         return res[el] === Math.max(...Object.values(res));
+//     })
+// );
 
