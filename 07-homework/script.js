@@ -9,37 +9,36 @@ const litva = {tax: 0.15, middleSalary: 1509, vacancies: 1114};
 //   Функція повинна викликатись через call та працювати з даними через this
 
 function getMyTaxes(salary) {
-    return `Податок з зарплати ${salary}$ сягає : ${this.tax * salary}$`
+    return this.tax * salary
 }
 
-console.log(getMyTaxes.call(ukraine, 1500))
-console.log(getMyTaxes.call(latvia, 1500))
-console.log(getMyTaxes.call(litva, 1500))
+console.log(`Податок з зарплати сягає :`, getMyTaxes.call(ukraine, 1500))
+console.log(`Податок з зарплати сягає :`, getMyTaxes.call(latvia, 1500))
+console.log(`Податок з зарплати сягає :`, getMyTaxes.call(litva, 1500))
 
 // 2.Створіть функцію getMiddleTaxes.call(country) -> number; – яка рахує скільки у середньому податків
 // платятт IT-спеціалісти у кожній країні.(tax * middleSalary). Функція повинна викликатись через call та
 // працювати з даними через this
 
-function getMiddleTaxes(country) {
-    return `Податок в ${country} з середньої зарплати ${this.middleSalary}$ сягає : ${this.tax * this.middleSalary}$`
-
+function getMiddleTaxes() {
+    return this.tax * this.middleSalary
 }
 
-console.log(getMiddleTaxes.call(ukraine, 'Ukraine'))
-console.log(getMiddleTaxes.call(latvia, 'Latvia'))
-console.log(getMiddleTaxes.call(litva, 'Litva'))
+console.log(`Податок в Ukraine з середньої зарплати 1789$ сягає :`, getMiddleTaxes.call(ukraine))
+console.log(`Податок в Latvia з середньої зарплати 1586 сягає :`, getMiddleTaxes.call(latvia))
+console.log(`Податок в Litva з середньої зарплати 1509 сягає :`, getMiddleTaxes.call(litva))
 
 
 // 3.Створіть функцію getTotalTaxes.call(country) -> number; – яка рахує, скільки всього податків платять IT-спеціалісти у кожній країні.
 // (tax * middleSalary * vacancies). Функція повинна викликатись через call та працювати з даними через this
 
-function getTotalTaxes(country) {
-    return `Всього податків в ${country} платять IT-спеціалісти : ${this.tax * this.middleSalary * this.vacancies}$`
+function getTotalTaxes() {
+    return this.tax * this.middleSalary * this.vacancies
 }
 
-console.log(getTotalTaxes.call(ukraine, 'Ukraine'))
-console.log(getTotalTaxes.call(latvia, 'Latvia'))
-console.log(getTotalTaxes.call(litva, 'Litva'))
+console.log(`Всього податків в Ukraine платять IT-спеціалісти :`, getTotalTaxes.call(ukraine))
+console.log(`Всього податків в Latvia платять IT-спеціалісти :`, getTotalTaxes.call(latvia))
+console.log(`Всього податків в Litva платять IT-спеціалісти :`, getTotalTaxes.call(litva))
 
 // 4.Створіть функцію getMySalary(country) – яка буде писати в консоль об'єкт виду:' +
 // ' { salary: number, taxes: number, profit: number } кожні 10 секунд.
