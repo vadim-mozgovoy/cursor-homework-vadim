@@ -40,6 +40,7 @@ function getTotalTaxes(country) {
 console.log(getTotalTaxes.call(ukraine, 'Ukraine'))
 console.log(getTotalTaxes.call(latvia, 'Latvia'))
 console.log(getTotalTaxes.call(litva, 'Litva'))
+
 // 4.Створіть функцію getMySalary(country) – яка буде писати в консоль об'єкт виду:' +
 // ' { salary: number, taxes: number, profit: number } кожні 10 секунд.
 // Значення salary – генеруйте випадковим чином у діапазоні 1500-2000. taxes – розраховується в залежності від вибраної країни та значення salary.
@@ -54,7 +55,6 @@ function getMySalary(country) {
         const obj = {salary: salary, taxes: taxes, profit: profit}
         console.log(`${country}`, obj)
     }, 10000)
-
 }
 
 getMySalary.call(ukraine, 'Ukraine')
