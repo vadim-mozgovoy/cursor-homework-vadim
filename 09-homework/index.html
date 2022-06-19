@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button{
+            width: 200px;
+            height: 40px;
+            background: greenyellow;
+            margin-bottom: 2em;
+            margin-top: 5em;
+            border: #97b667 solid 1px;
+            border-radius: 10px ;
+        }
+        #content{
+            margin: 0 auto;
+        }
+        #content{
+            display: flex;
+            flex-flow: wrap;
+            width: 250px;
+            height: 250px;
+        }
+        .btn{
+            display: flex;
+            justify-content: center;
+            gap: 4em;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="btn">
+        <button id="generate">generateBlocks</button>
+        <button id="interval">generateBlocksInterval</button>
+    </div>
+    <div id="content"></div>
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
