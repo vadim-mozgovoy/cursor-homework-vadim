@@ -1,0 +1,42 @@
+body {
+    background: url("./img/dj-playing-music-at-sound-mixer-in-night-club_53876-18678.jpg") no-repeat 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.sound {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border: 3px solid violet;
+    width: 110px;
+    height: 110px;
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    justify-content: center;
+    border-radius: 10px;
+    transition: all .3s;
+}
+
+.sound span {
+    font-size: 1.2rem;
+    color: greenyellow;
+    padding-top: 0.5rem;
+}
+
+.active {
+    transform: scale(1.2);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
