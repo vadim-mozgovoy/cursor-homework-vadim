@@ -2,9 +2,11 @@ const btnStart = document.querySelector('#generate')
 const btnStop = document.querySelector('#interval')
 const content = document.querySelector('#content')
 
+btnStop.disabled = true
+btnStop.style.cursor = 'no-drop'
+
 function getRandomColor() {
     return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`
-
 }
 
 function generateBlocks() {
@@ -15,13 +17,17 @@ function generateBlocks() {
         div.style.backgroundColor = `${getRandomColor()}`
         content.append(div)
     }
+    btnStop.disabled = false
+    btnStop.style.cursor = 'pointer'
+    btnStart.disabled = true
 }
 
-const generateBlocksInterval = function() {
+const generateBlocksInterval = function () {
     const box = document.querySelectorAll("#content>div")
     setInterval(() => box.forEach(el => el.style.backgroundColor = `${getRandomColor()}`), 1000)
+
 }
 
-btnStart.addEventListener('click', generateBlocks,{once:true})
+btnStart.addEventListener('click', generateBlocks, {once: true})
 btnStop.addEventListener('click', generateBlocksInterval)
 

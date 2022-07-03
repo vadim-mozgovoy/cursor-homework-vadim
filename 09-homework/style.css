@@ -1,0 +1,28 @@
+button {
+    width: 200px;
+    height: 40px;
+    background: greenyellow;
+    margin-bottom: 2em;
+    margin-top: 5em;
+    border: #97b667 solid 1px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#content {
+    margin: 0 auto;
+}
+
+#content {
+    display: flex;
+    flex-flow: wrap;
+    width: 250px;
+    height: 250px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    gap: 4em;
+}
+
