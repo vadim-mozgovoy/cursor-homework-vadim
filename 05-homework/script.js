@@ -3,6 +3,9 @@
 // Приклад: getRandomArray(15, 1, 100) –> [6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2]
 
 function getRandomArray(length, min, max) {
+    if(isNaN(length) || isNaN(min) || isNaN(max)){
+        alert  ('Введенi даннi не вiрнi! Треба вводити цiлi числа!')
+    }
     const randomArray = [];
     const maxValue = Math.max(min, max)
     const minValue = Math.min(min, max)
@@ -22,7 +25,7 @@ console.log('getRandomArray(15, 1, 100) = ', getRandomArray(15, 100, 1))
 function getModa(...numbers) {
 
     const arrNumbers = numbers.filter((el) => Number.isInteger(el) && !isNaN(el));
-    let count = 1, tempCount, tempPopular;
+    let count = 1, tempCount, tempPopular,result = [], uniqueNumbers;
     let popular = numbers[0];
     for (let i = 0; i < arrNumbers.length - 1; i++) {
         tempPopular = arrNumbers[i];
@@ -30,16 +33,18 @@ function getModa(...numbers) {
         for (let j = 1; j < arrNumbers.length; j++) {
             if (tempPopular === arrNumbers[j]) tempCount++;
         }
-        if (tempCount > count) {
-            popular = tempPopular;
-            count = tempCount;
+        if (tempCount >= count) {
+            popular = tempPopular
+            count = tempCount
+            result.push(popular)
+            uniqueNumbers = new Set(result)
         }
     }
-
-    return popular
+    return uniqueNumbers
 }
 
-console.log('Саме моднє число [6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, "f" ] => ', getModa(6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, 'f'))
+console.log('Саме моднє число [6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, \'f\', 5, 5, 5, 5 ] => ',
+    getModa(6, 2, 55, 11, 7.8, 2, 5.5, 77, 57, 87, 23, 2, 56, 3, 2, 'f', 5, 5, 5, 5))
 
 
 //3. Створіть функцію getAverage(...numbers) – яка рахує середнє арифметичне всіх переданих в неї аргументів.
@@ -72,22 +77,22 @@ console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = '
 //5. Створіть функцію filterEvenNumbers(...numbers) – яка фільтрує парні числа передані як аргументи функції
 // Приклад: filterEvenNumbers(1, 2, 3, 4, 5, 6) -> [1, 3, 5]
 
-const filterEvenNumbers = (...numbers) => numbers.filter((el) => Number(el) && el % 2 !== 0)
-console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6, "g") = ', filterEvenNumbers(1, 2, 3, 4, 5, 6, 'g'))
+const filterEvenNumbers = (...numbers) => numbers.filter((el) => Number(el) && el % 2 !== 0 && el !==true)
+console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6, "g", true) = ', filterEvenNumbers(1, 2, 3, 4, 5, 6,'g', true))
 
 //6. Створіть функцію countPositiveNumbers(...numbers) – яка порахує кількість чисел більших 0
 // Приклад: countPositiveNumbers(1, -2, 3, -4, -5, 6) -> 3
 
-const countPositiveNumbers = (...numbers) => numbers.filter((el) => el > 0).length
-console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6) = ', countPositiveNumbers(1, -2, 3, -4, -5, 6))
+const countPositiveNumbers = (...numbers) => numbers.filter((el) => el > 0 && el !== true).length
+console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6, true) = ', countPositiveNumbers(1, -2, 3, -4, -5, 6, true))
 
 
 //7. Створіть функцію getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті,
 // які діляться на ціло на 5
 // Приклад: getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) -> [55, 55]
 
-const getDividedByFive = (...numbers) => numbers.filter(item => item % 5 === 0 && item !== 0)
-console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) =', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+const getDividedByFive = (...numbers) => numbers.filter(item => item % 5 === 0 && item !== 0 && item !== false)
+console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2 , false) =', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2, false))
 
 
 // 8.Створіть функцію replaceBadWords(string) – яка 1) розіб'є фразу на слова, 2) замінить погані слова на зірочки (*).
@@ -146,21 +151,22 @@ function generateCombinations(word) {
     } else if (word.length > 10) {
         return "Too long word"
     } else {
-        let allCombinations = [];
+        let uniqueCombinations = [];
         for (let i = 0; i < word.length; i++) {
             let letter = word[i];
             let shorterWord = word.substr(0, i) + word.substr(i + 1, word.length - 1);
             let shortWordArray = generateCombinations(shorterWord);
             for (let j = 0; j < shortWordArray.length; j++) {
-                allCombinations.push(letter + shortWordArray[j]);
+                uniqueCombinations.push(letter + shortWordArray[j]);
             }
         }
-        return allCombinations;
+        return uniqueCombinations;
     }
 }
 
 console.log('generateCombinations("man") -', generateCombinations("man"))
 console.log('generateCombinations("ol") -', generateCombinations("ol"))
+
 
 
 // const arr = [1, 2, 3, 3, 2, 2, 18, 18, 18, 18, 18, 18];
