@@ -29,6 +29,9 @@ class Students {
 
 // Створіть метод отримання середнього балу this.getAverageMark() -> 4.6
     getAverageMark() {
+        if(this.dismiss === true){
+            return null
+        }
         return this.marks.reduce((sum, val) => {
             return Number((sum + val / this.marks.length).toFixed(2))
         }, 0)
@@ -49,7 +52,8 @@ class Students {
     }
 }
 
-const ostap = new Students('Вищої Школи Психотерапії м.Одеса', 'Студент 1го курсу', 'Остап Бендер', [5, 4, 4, 5])
+const ostap = new Students('Вищої Школи Психотерапії м.Одеса', 'Студент 1го курсу',
+    'Остап Бендер', [5, 4, 4, 5])
 console.log('Iнформация про студента:', ostap.getInfo())
 console.log('Mасив оцінок студента', ostap.getMarks)
 ostap.setMarks = 5;
@@ -80,19 +84,25 @@ class BudgetStudent extends Students {
 // Студент отримує стипендію тільки в тому випадку, якщо середній бал у нього вище або дорівнює 4.0
 // Якщо студента виключено, він не отримує стипендію (думаю це було і так очевидно :) )
     getScholarship() {
-        return (this.dismiss || this.getAverageMark() < 4) ? console.log('Ви виключені або Ваша середня оцінка менше 4') : console.log(`Ви отримали ${this.scholarShip}грн стипендії`);
+        if(this.dismiss === true){
+            console.log('Ви виключені або Ваша середня оцінка менше 4')
+        }else if(this.getAverageMark() < 4){
+            console.log('Ви виключені або Ваша середня оцінка менше 4')
+        }
+        else{
+            console.log(`Ви отримали ${this.scholarShip}грн стипендії`);
+        }
     }
 }
 
-const ivan = new BudgetStudent('Вищої Школи Прикладної Математики м.Київ', 'Студент 2го курсу', 'Iван Полуботок', [4, 4, 5, 5], 1500)
+const ivan = new BudgetStudent('Вищої Школи Прикладної Математики м.Київ', 'Студент 2го курсу',
+    'Iван Полуботок', [4, 4, 5, 5], 1500)
 console.log('<<<<<<<<Advanced>>>>>>>>')
 console.log('Iнформация про студента:', ivan.getInfo())
-ivan.getScholarship()
 console.log('Статус чи студента видалено:', ivan.dismissed())
-ivan.getScholarship()
 console.log('Статус чи студента видалено:', ivan.recover())
 ivan.setMarks = 1
-console.log(ivan.getMarks)
+console.log('Новий масив оцінок студента :',ivan.getMarks)
 console.log(`Середнiй бал студента ${ivan.fullName}:`, ivan.getAverageMark())
 ivan.getScholarship()
 
