@@ -1,0 +1,17 @@
+body{
+    background-color: lightblue;
+}
+p{
+    text-align: center;
+}
+.content{
+    width: 90%;
+    margin: 20px;
+}
+#up, #down{
+    background-color: #32b714;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    margin-right: 50px;
+}

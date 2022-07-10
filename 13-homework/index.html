@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Iterator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p>Open Console!</p>
+<div class="content">Завдання 1:
+    Створіть нескінченний генератор ідентифікаторів. Повинен працювати наступним чином:
+    const idGenerator = createIdGenerator();<br>
+    idGenerator.next().value -> 1<br>
+    idGenerator.next().value -> 2<br>
+    idGenerator.next().value -> 3<br>
+</div>
+<div class="content">Завдання 2 (advanced)
+    Створіть генератор, який буде регулювати розміри шрифту для вашого сайту.
+    (Можна допрацювати, щоб реально змінював шрифт, але це не є обов'язковою умовою)
+    Працювати генератор буде наступним чином:
+    const fontGenerator = newFontGenerator(14); // 14 – стартове значення<br>
+    fontGenerator.next("up").value -> 14<br>
+    fontGenerator.next("up").value -> 16<br>
+    fontGenerator.next("up").value -> 18<br>
+    fontGenerator.next().value -> 18<br>
+    fontGenerator.next("down").value -> 16<br>
+    fontGenerator.next("down").value -> 14<br>
+    fontGenerator.next("down").value -> 12<br>
+    fontGenerator.next().value -> 12<br>
+</div>
+<button id="up">Size up</button>
+<button id="down">Size down</button>
+
+<script src="script.js"></script>
+</body>
+</html>
