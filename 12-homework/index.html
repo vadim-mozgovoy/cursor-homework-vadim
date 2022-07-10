@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">Heroes of Star Wars</h1>
+    <div class="star-wars">
+        <div class="d-flex justify-content-center">
+        </div>
+        <select id="select-film">
+            <option class="heroes_option" value="1">A New Hope</option>
+            <option class="heroes_option" value="2">The Empire Strikes Back</option>
+            <option class="heroes_option" value="3">Return of the Jedi</option>
+            <option class="heroes_option" value="4">The Phantom Menace</option>
+            <option class="heroes_option" selected="selected" value="5">Attack of the Clones</option>
+            <option class="heroes_option" value="6">Revenge of the Sith</option>
+        </select>
+        <a id="characters">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Get information
+        </a>
+
+    </div>
+    <div id="heroesList"></div>
+    <button id="planets">
+        <span class="btnPlanets">Planets info</span>
+    </button>
+
+    <div id="planetsList"></div>
+
+    <div class="btn">
+        <button id="previous">PREVIOUS</button>
+        <button id="next">NEXT</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

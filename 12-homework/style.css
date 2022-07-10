@@ -1,0 +1,289 @@
+@font-face {
+    font-family: 'Heavy Weight Gamer';
+    src: url('font/HeavyWeightGamer.eot');
+    src: url('font/HeavyWeightGamer.eot?#iefix') format('embedded-opentype'),
+    url('font/HeavyWeightGamer.woff2') format('woff2'),
+    url('font/HeavyWeightGamer.woff') format('woff'),
+    url('font/HeavyWeightGamer.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    font-family: 'Heavy Weight Gamer', serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    padding: 5px;
+    background-image: url("./img/star-wars-zvezdnye-voyny-4371.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    margin-top: 5rem;
+    letter-spacing: 0.5rem;
+}
+
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: #fbfbfb url('//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif') no-repeat center center;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+#select-film {
+    height: 3rem;
+    width: 15rem;
+    margin-right: 5rem;
+    opacity: 0.7;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Heavy Weight Gamer', serif;
+}
+
+#select-film {
+    border: 3px solid #fff;
+    box-shadow: 0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #0fcece,
+    0 0 0.8rem #60c9ef,
+    0 0 2.8rem #0fcece,
+    inset 0 0 1.3rem #03b9f1;
+}
+
+
+#characters {
+    position: relative;
+    display: inline-block;
+    padding: 15px 15px 30px 15px;
+    color: #0fcece;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 2px;
+    overflow: hidden;
+}
+
+#characters:hover {
+    background: #0fcece;
+    color: #050801;
+    box-shadow: 0 0 5px #0fcece,
+    0 0 25px #0fcece,
+    0 0 50px #0fcece,
+    0 0 200px #0fcece;
+}
+
+#characters:nth-child(1) {
+    filter: hue-rotate(270deg);
+}
+
+#characters:nth-child(2) {
+    filter: hue-rotate(110deg);
+}
+
+#characters span {
+    position: absolute;
+    display: block;
+}
+
+#characters span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0fcece);
+    animation: animate1 1s linear infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+#characters span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #0fcece);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+
+@keyframes animate2 {
+    0% {
+        top: -100%;
+    }
+    50%, 100% {
+        top: 100%;
+    }
+}
+
+#characters span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #0fcece);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+}
+
+@keyframes animate3 {
+    0% {
+        right: -100%;
+    }
+    50%, 100% {
+        right: 100%;
+    }
+}
+
+
+#characters span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #0fcece);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+}
+
+@keyframes animate4 {
+    0% {
+        bottom: -100%;
+    }
+    50%, 100% {
+        bottom: 100%;
+    }
+}
+
+
+.star-wars {
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+}
+
+#heroesList {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+    padding: 5rem;
+}
+
+.hero {
+    margin: 1rem;
+    border: 1px solid grey;
+    width: 15rem;
+    height: 15rem;
+    padding: 10px;
+    color: greenyellow;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    display: flex;
+    align-items: end;
+    border-radius: 10px;
+    box-shadow: 20px -15px 10px 5px rgba(0, 0, 0, .5);
+}
+
+.planet {
+    list-style-type: none;
+    padding: 10px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+#planetsList {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    margin-top: 2rem;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+#planets {
+    margin: 0 auto;
+    background-image: linear-gradient(135deg, #008aff, #86d472);
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: block;
+    height: 50px;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
+}
+
+#planets:hover {
+    color: #fff;
+}
+
+#planets .btnPlanets {
+    align-items: center;
+    background: #0e0e10;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
+}
+
+#planets:hover .btnPlanets {
+    background: transparent;
+}
+
+#previous, #next {
+    border: 5em;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+    padding: 0.7em 2em;
+    border-radius: 1px;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.438);
+    -webkit-transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+    color: white;
+    margin-bottom: 5rem;
+}
+
