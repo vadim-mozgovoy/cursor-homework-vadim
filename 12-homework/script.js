@@ -47,7 +47,7 @@ async function getCharacters() {
         cardHero.classList.add('hero')
         const heroCapture = document.createElement('div')
         heroCapture.innerHTML = heroInfo
-        cardHero.style.backgroundImage = `url(./img/${heroName.replaceAll(" ", "").toLowerCase()}.jpg)`
+        cardHero.style.backgroundImage = `url(./img/${heroName.replaceAll(" ", '').toLowerCase()}.jpg)`
         cardHero.append(heroCapture)
         heroesList.append(cardHero)
     }
