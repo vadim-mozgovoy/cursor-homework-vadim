@@ -45,12 +45,11 @@ async function getCharacters() {
                             <span>Birth Year: ${hero.birth_year}</span> `
         const cardHero = document.createElement('div')
         cardHero.classList.add('hero')
+        heroesList.append(cardHero)
+        cardHero.style.backgroundImage = `url(./img/${heroName.replaceAll(" ", '').toLowerCase()}.jpeg)`
         const heroCapture = document.createElement('div')
         heroCapture.innerHTML = heroInfo
-        cardHero.style.backgroundImage = `url(./img/${heroName.replaceAll(" ", '').toLowerCase()}.jpeg)`
         cardHero.append(heroCapture)
-        console.log(cardHero)
-        heroesList.append(cardHero)
     }
 
 }
