@@ -24,6 +24,7 @@
 const btnUp = document.querySelector('#up')
 const btnDown = document.querySelector('#down')
 const body = document.querySelector('body')
+const valueFontSize = document.querySelector('#valueFontSize')
 const globalFontSize = Number(window.getComputedStyle(body, null).getPropertyValue('font-size').slice(0, 2))
 
 // Завдання 1:
@@ -64,12 +65,18 @@ console.log(`fontGenerator.next('down').value-> `, fontGenerator.next('down').va
 console.log(`fontGenerator.next('down').value-> `, fontGenerator.next('down').value);//12
 console.log(`fontGenerator.next().value-> `, fontGenerator.next().value);//12
 
+function viewResult(fontSize) {
+    valueFontSize.textContent = `Current Font-size :${fontSize}px`;
+}
+
 btnUp.addEventListener("click", () => {
     const fontSize = fontGenerator.next("up").value;
     body.style.fontSize = `${fontSize}px`;
+    viewResult(fontSize)
 });
 btnDown.addEventListener("click", () => {
     const fontSize = fontGenerator.next("down").value;
     body.style.fontSize = `${fontSize}px`;
+    viewResult(fontSize)
 });
 
