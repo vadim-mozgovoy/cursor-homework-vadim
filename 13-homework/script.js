@@ -24,7 +24,7 @@
 const btnUp = document.querySelector('#up')
 const btnDown = document.querySelector('#down')
 const body = document.querySelector('body')
-
+const globalFontSize = Number(window.getComputedStyle(body, null).getPropertyValue('font-size').slice(0, 2))
 
 // Завдання 1:
 function* createIdGenerator() {
@@ -54,7 +54,7 @@ function* newFontGenerator(fontSize) {
     }
 }
 
-const fontGenerator = newFontGenerator(14)
+const fontGenerator = newFontGenerator(globalFontSize)
 console.log(`fontGenerator.next('up').value-> `, fontGenerator.next('up').value);//14
 console.log(`fontGenerator.next('up').value-> `, fontGenerator.next('up').value);//16
 console.log(`fontGenerator.next('up').value-> `, fontGenerator.next('up').value);//18
@@ -72,3 +72,4 @@ btnDown.addEventListener("click", () => {
     const fontSize = fontGenerator.next("down").value;
     body.style.fontSize = `${fontSize}px`;
 });
+
